@@ -7,6 +7,7 @@ import rateLimit from "express-rate-limit";
 import { config } from "./config";
 import logger from "./utils/logger";
 import { errorHandler } from "./middleware/error.middleware";
+import routes from "./routes";
 
 const app = express();
 
@@ -48,5 +49,7 @@ process.on("SIGTERM", () => {
     process.exit(0);
   });
 });
+
+app.use("/api/v1", routes);
 
 export default app;
